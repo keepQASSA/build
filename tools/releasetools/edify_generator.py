@@ -244,16 +244,12 @@ class EdifyGenerator(object):
     """Log a message to the screen (if the logs are visible)."""
     self.script.append('ui_print("%s");' % (message,))
 
-  def PrintPixelExperienceBanner(self, is_plus, android_version, build_id, build_date,
+  def PrintAOSQPBanner(self, is_plus, android_version, build_id, build_date,
                                   security_patch, device, prev_build_id=None,
                                   prev_build_date=None, prev_security_patch=None):
     self.Print("----------------------------------------------")
-    if is_plus:
-      self.Print("        PixelExperience (Plus edition)")
-      self.Print("                by jhenrique09")
-    else:
-      self.Print("              PixelExperience")
-      self.Print("              by jhenrique09")
+    self.Print("                 AOSQP QASSA")
+    self.Print("                by AOSQP Team")
     self.Print("----------------------------------------------")
     self.Print(" Android version: %s"%(android_version))
     if prev_build_id != None and prev_build_id != build_id:
@@ -455,8 +451,8 @@ class EdifyGenerator(object):
   def RunUmountAll(self):
     self.script.append('run_program("/sbin/sh", "/tmp/install/bin/umount_all.sh");')
 
-  def AddPixelExperienceVersionAssertion(self, error_msg, source_version):
+  def AddAOSQPVersionAssertion(self, error_msg, source_version):
     prop_path = "/system_root/system/build.prop"
-    source_version_prop = "org.pixelexperience.version.display"
+    source_version_prop = "ro.aosqp.version.display"
     self.script.append('assert(try_file_getprop("%s", "%s") == "%s" || abort("%s"));' % (prop_path, source_version_prop, source_version, error_msg))
 
