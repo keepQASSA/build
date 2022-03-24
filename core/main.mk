@@ -179,8 +179,8 @@ endif
 
 #
 # -----------------------------------------------------------------
-# Add our custom properties to the build properties.
-ADDITIONAL_BUILD_PROPERTIES += $(CUSTOM_PROPERTIES)
+# Add our aosqp properties to the build properties.
+ADDITIONAL_BUILD_PROPERTIES += $(AOSQP_PROPERTIES)
 
 # Bring in standard build system definitions.
 include $(BUILD_SYSTEM)/definitions.mk
