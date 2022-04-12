@@ -244,7 +244,7 @@ class EdifyGenerator(object):
     """Log a message to the screen (if the logs are visible)."""
     self.script.append('ui_print("%s");' % (message,))
 
-  def PrintAOSQPBanner(self, is_plus, android_version, build_id, build_date,
+  def PrintAOSQPBanner(self, AOSQP_version, android_version, build_id, build_date,
                                   security_patch, device, prev_build_id=None,
                                   prev_build_date=None, prev_security_patch=None):
     self.Print("----------------------------------------------")
@@ -252,6 +252,7 @@ class EdifyGenerator(object):
     self.Print("                by AOSQP Team")
     self.Print("----------------------------------------------")
     self.Print(" Android version: %s"%(android_version))
+    self.Print(" AOSQP version: %s"%(AOSQP_version))
     if prev_build_id != None and prev_build_id != build_id:
       self.Print(" Build id: %s -> %s"%(prev_build_id, build_id))
     else:
