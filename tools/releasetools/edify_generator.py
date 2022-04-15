@@ -247,6 +247,8 @@ class EdifyGenerator(object):
   def PrintAOSQPBanner(self, AOSQP_version, android_version, build_id, build_date,
                                   security_patch, device, prev_build_id=None,
                                   prev_build_date=None, prev_security_patch=None):
+    self.Print(" yooo look at this dude, flashing Android 10 in 2022! [LAUGH]")
+    self.Print("                                              ")
     self.Print("----------------------------------------------")
     self.Print("                 AOSQP QASSA")
     self.Print("                by AOSQP Team")
