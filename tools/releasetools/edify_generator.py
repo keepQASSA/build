@@ -248,32 +248,6 @@ class EdifyGenerator(object):
                                   security_patch, device, prev_build_id=None,
                                   prev_build_date=None, prev_security_patch=None):
     self.Print(" yooo look at this dude, flashing Android 10 in 2022! [LAUGH]")
-    self.Print("                                              ")
-    self.Print("----------------------------------------------")
-    self.Print("              ____                            ")
-    self.Print("             K __ \ ___   ___________         ")
-    self.Print("            E / / // - | / __/ __/ - |        ")
-    self.Print("           E /_/ // __ |_\ \_\ \/ __ |        ")
-    self.Print("           P___\_/_/ |_/___/___/_/ |_|        ")
-    self.Print("                                              ")
-    self.Print("                 by NgantuProject             ")
-    self.Print("----------------------------------------------")
-    self.Print(" Android version: %s"%(android_version))
-    self.Print(" AOSQP version: %s"%(AOSQP_version))
-    if prev_build_id != None and prev_build_id != build_id:
-      self.Print(" Build id: %s -> %s"%(prev_build_id, build_id))
-    else:
-      self.Print(" Build id: %s"%(build_id))
-    if prev_build_date != None and prev_build_date != build_date:
-      self.Print(" Build date: %s -> %s"%(prev_build_date, build_date))
-    else:
-      self.Print(" Build date: %s"%(build_date))
-    if prev_security_patch != None and prev_security_patch != security_patch:
-      self.Print(" Security patch: %s -> %s"%(prev_security_patch, security_patch))
-    else:
-      self.Print(" Security patch: %s"%(security_patch))
-    self.Print(" Device: %s"%(device))
-    self.Print("----------------------------------------------")
 
   def TunePartition(self, partition, *options):
     fstab = self.fstab
