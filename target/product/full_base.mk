@@ -43,7 +43,7 @@ PRODUCT_PACKAGES += \
 # Put en_US first in the list, so make it default.
 PRODUCT_LOCALES := en_US
 
-ifeq ($(AOSQP_BUILD),)
+ifeq ($(QASSA_BUILD),)
 # Get some sounds
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
 endif

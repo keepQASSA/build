@@ -244,7 +244,7 @@ class EdifyGenerator(object):
     """Log a message to the screen (if the logs are visible)."""
     self.script.append('ui_print("%s");' % (message,))
 
-  def PrintAOSQPBanner(self, AOSQP_version, android_version, build_id, build_date,
+  def PrintQASSABanner(self, QASSA_version, android_version, build_id, build_date,
                                   security_patch, device, prev_build_id=None,
                                   prev_build_date=None, prev_security_patch=None):
     self.Print(" yooo look at this dude, flashing Android 10 in 2022! [LAUGH]")
@@ -433,8 +433,8 @@ class EdifyGenerator(object):
   def RunUmountAll(self):
     self.script.append('run_program("/sbin/sh", "/tmp/install/bin/umount_all.sh");')
 
-  def AddAOSQPVersionAssertion(self, error_msg, source_version):
+  def AddQASSAVersionAssertion(self, error_msg, source_version):
     prop_path = "/system_root/system/build.prop"
-    source_version_prop = "ro.aosqp.version.display"
+    source_version_prop = "ro.qassa.version.display"
     self.script.append('assert(try_file_getprop("%s", "%s") == "%s" || abort("%s"));' % (prop_path, source_version_prop, source_version, error_msg))
 

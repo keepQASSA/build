@@ -60,6 +60,6 @@ if [ -n "$BUILD_THUMBPRINT" ] ; then
   echo "ro.build.thumbprint=$BUILD_THUMBPRINT"
 fi
 
-echo "ro.aosqp.device=$AOSQP_BUILD"
+echo "ro.qassa.device=$QASSA_BUILD"
 
 echo "# end build properties"

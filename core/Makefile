@@ -406,7 +406,7 @@ endif
 	$(hide) TARGET_BUILD_TYPE="$(TARGET_BUILD_VARIANT)" \
 	        TARGET_BUILD_FLAVOR="$(TARGET_BUILD_FLAVOR)" \
 	        TARGET_DEVICE="$(TARGET_DEVICE)" \
-	        AOSQP_BUILD="$(AOSQP_BUILD)" \
+	        QASSA_BUILD="$(QASSA_BUILD)" \
 	        PRODUCT_NAME="$(TARGET_PRODUCT)" \
 	        PRODUCT_BRAND="$(PRODUCT_BRAND)" \
 	        PRODUCT_DEFAULT_LOCALE="$(call get-default-product-locale,$(PRODUCT_LOCALES))" \
@@ -893,7 +893,7 @@ endif
 ifdef BUILDING_RAMDISK_IMAGE
 BOOT_RAMDISK_COMPRESSOR := $(MINIGZIP)
 RECOVERY_RAMDISK_COMPRESSOR := $(MINIGZIP)
-LZMA := prebuilts/tools-aosqp/${HOST_OS}-x86/bin/lzma
+LZMA := prebuilts/tools-qassa/${HOST_OS}-x86/bin/lzma
 ifneq ($(LZMA_RAMDISK_TARGETS),)
   ifneq (,$(findstring boot,$(LZMA_RAMDISK_TARGETS)))
     BOOT_RAMDISK_COMPRESSOR := $(LZMA) -f -c
@@ -1921,8 +1921,8 @@ define build-recoveryramdisk
 endef
 else
 define build-recoveryramdisk
-  $(hide) ./vendor/aosqp/tools/changelog.sh
-  $(hide) mv $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(AOSQP_VERSION)-Changelog.txt
+  $(hide) ./vendor/qassa/tools/changelog.sh
+  $(hide) mv $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(QASSA_VERSION)-Changelog.txt
   @echo ----- Making recovery image ------
   $(hide) mkdir -p $(TARGET_RECOVERY_OUT)
   $(hide) mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/sdcard $(TARGET_RECOVERY_ROOT_OUT)/tmp
@@ -2349,8 +2349,8 @@ endif
 
 # $(1): output file
 define build-systemimage-target
-  $(hide) ./vendor/aosqp/tools/changelog.sh
-  $(hide) mv $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(AOSQP_VERSION)-Changelog.txt
+  $(hide) ./vendor/qassa/tools/changelog.sh
+  $(hide) mv $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(QASSA_VERSION)-Changelog.txt
   @echo "Target system fs image: $(1)"
   $(call create-system-vendor-symlink)
   $(call create-system-product-symlink)
