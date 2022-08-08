@@ -261,3 +261,7 @@ vendor.lineage.touch.*
 ###################################################
 # LiveDisplay
 vendor.lineage.livedisplay.*
+
+###################################################
+# qcom.fmradio
+qcom.fmradio.*
