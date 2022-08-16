@@ -266,7 +266,7 @@ class FileSystem(object):
 
 # FileSystemDiff works on two targetfiles zip files.
 class FileSystemDiff(object):
-  def __init__(self, partition, tgt, src=None, threads=None, use_dynamic_partition=False):
+  def __init__(self, partition, tgt, src=None, threads=None):
     if threads is None:
       threads = multiprocessing.cpu_count() // 2
       if threads == 0:
@@ -277,12 +277,10 @@ class FileSystemDiff(object):
     self.partition = partition
     self.zip_partition = self.partition.upper()
 
-    system_prefix = "system_root" if not use_dynamic_partition else "system"
-  
     if self.partition == 'system':
-      self.fs_root = "/%s" % (system_prefix + '/system')
+      self.fs_root = "/%s" % ('system/system')
     elif self.partition == 'root':
-      self.fs_root = "/%s" % (system_prefix)
+      self.fs_root = "/%s" % ('system')
     else:
       self.fs_root = "/%s" % (self.partition)
 
