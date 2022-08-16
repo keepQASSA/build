@@ -23,8 +23,12 @@ PRODUCT_PACKAGES := \
     libfwdlockengine \
     WAPPushManager
 
+# GApps
+ifeq ($(WITH_GAPPS),true)
+# Prebuilt Packages
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker
+endif
 
 # Bluetooth:
 #   audio.a2dp.default is a system module. Generic system image includes
