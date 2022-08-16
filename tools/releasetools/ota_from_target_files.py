@@ -1771,19 +1771,13 @@ def WriteFileIncrementalOTAPackage(target_zip, source_zip, output_file):
       "/tmp/boot.img", "boot.img", OPTIONS.target_tmp, "BOOT", target_info)
   updating_boot = (source_boot.data != target_boot.data)
 
-  files_to_patch = []
-
   system_diff = common.FileSystemDifference("system", target_zip, source_zip)
-  files_to_patch += system_diff.GetFilesToPatch()
-
   root_diff = common.FileSystemDifference("root", target_zip, source_zip)
-  files_to_patch += root_diff.GetFilesToPatch()
 
   if HasVendorPartition(target_zip):
     if not HasVendorPartition(source_zip):
       raise RuntimeError("can't generate incremental that adds /vendor")
     vendor_diff = common.FileSystemDifference("vendor", target_zip, source_zip)
-    files_to_patch += vendor_diff.GetFilesToPatch()
   else:
     vendor_diff = None
 
@@ -1791,7 +1785,6 @@ def WriteFileIncrementalOTAPackage(target_zip, source_zip, output_file):
     if not HasProductPartition(source_zip):
       raise RuntimeError("can't generate incremental that adds /product")
     product_diff = common.FileSystemDifference("product", target_zip, source_zip)
-    files_to_patch += product_diff.GetFilesToPatch()
   else:
     product_diff = None
 
@@ -1799,7 +1792,6 @@ def WriteFileIncrementalOTAPackage(target_zip, source_zip, output_file):
     if not HasOdmPartition(source_zip):
       raise RuntimeError("can't generate incremental that adds /odm")
     odm_diff = common.FileSystemDifference("odm", target_zip, source_zip)
-    files_to_patch += odm_diff.GetFilesToPatch()
   else:
     odm_diff = None
 
@@ -1843,7 +1835,6 @@ def WriteFileIncrementalOTAPackage(target_zip, source_zip, output_file):
   source_version = os.path.splitext(os.path.basename(OPTIONS.incremental_source))[0]
   error_msg = "Failed to apply update, please download full package at NgantuProject | Channel" + device
   script.AddQASSAVersionAssertion(error_msg, source_version)
-  script.AddQASSAPatchAssertion(error_msg, files_to_patch)
 
   device_specific.IncrementalOTA_VerifyEnd()
 
@@ -1905,6 +1896,9 @@ def WriteFileIncrementalOTAPackage(target_zip, source_zip, output_file):
 
   script.AddToZip(target_zip, output_zip, input_path=OPTIONS.updater_binary)
   metadata["ota-required-cache"] = str(script.required_cache)
+
+  common.ZipWriteStr(output_zip, "system/build.prop",
+                     ""+target_zip.read("SYSTEM/build.prop"))
 
   # We haven't written the metadata entry yet, which will be handled in
   # FinalizeMetadata().

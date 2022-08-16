@@ -445,16 +445,7 @@ class EdifyGenerator(object):
   def RunUmountAll(self):
     self.script.append('run_program("/sbin/sh", "/tmp/install/bin/umount_all.sh");')
 
-  def FileCheck(self, filename, sha1, error_msg):
-    """Check that the given file has one of the
-    given sha1 hashes."""
-    self.script.append('assert(sha1_check(read_file("%s"), "%s") || abort("%s"));' % (filename, sha1, error_msg))
-
   def AddQASSAVersionAssertion(self, error_msg, source_version):
     prop_path = "/system/build.prop"
     source_version_prop = "ro.qassa.version.display"
     self.script.append('assert(file_getprop("%s", "%s") == "%s" || abort("%s"));' % (prop_path, source_version_prop, source_version, error_msg))
-
-  def AddQASSAPatchAssertion(self, error_msg, files_to_patch):
-    for file, sha1_hash in files_to_patch:
-      self.FileCheck(file, sha1_hash, error_msg)
