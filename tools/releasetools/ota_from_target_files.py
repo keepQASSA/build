@@ -1012,7 +1012,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   android_version = target_info.GetBuildProp("ro.build.version.release")
   build_id = target_info.GetBuildProp("ro.build.id")
   build_date = target_info.GetBuildProp("ro.qassa.build_date")
-  security_patch = target_info.GetBuildProp("ro.qassa.build_security_patch")
+  security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
   device = target_info.GetBuildProp("ro.qassa.device")
   script.PrintQASSABanner(QASSA_version, android_version, build_id, build_date,
                                   security_patch, device)
@@ -1165,7 +1165,7 @@ def GetPackageMetadata(target_info, source_info=None):
       'post-sdk-level' : target_info.GetBuildProp(
           'ro.build.version.sdk'),
       'post-security-patch-level' : target_info.GetBuildProp(
-          'ro.qassa.build_security_patch'),
+          'ro.build.version.security_patch'),
   }
 
   if target_info.is_ab:
@@ -1629,11 +1629,11 @@ def WriteBlockIncrementalOTAPackage(target_zip, source_zip, output_file):
   android_version = target_info.GetBuildProp("ro.build.version.release")
   build_id = target_info.GetBuildProp("ro.build.id")
   build_date = target_info.GetBuildProp("ro.qassa.build_date")
-  security_patch = target_info.GetBuildProp("ro.qassa.build_security_patch")
+  security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
   device = target_info.GetBuildProp("ro.qassa.device")
   prev_build_id = source_info.GetBuildProp("ro.build.id")
   prev_build_date = source_info.GetBuildProp("ro.qassa.build_date")
-  prev_security_patch = source_info.GetBuildProp("ro.qassa.build_security_patch")
+  prev_security_patch = source_info.GetBuildProp("ro.build.version.security_patch")
   script.PrintQASSABanner(QASSA_version, android_version, build_id, build_date,
                                   security_patch, device, prev_build_id,
                                   prev_build_date, prev_security_patch)
@@ -1802,11 +1802,11 @@ def WriteFileIncrementalOTAPackage(target_zip, source_zip, output_file):
   android_version = target_info.GetBuildProp("ro.build.version.release")
   build_id = target_info.GetBuildProp("ro.build.id")
   build_date = target_info.GetBuildProp("ro.qassa.build_date")
-  security_patch = target_info.GetBuildProp("ro.qassa.build_security_patch")
+  security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
   device = target_info.GetBuildProp("ro.qassa.device")
   prev_build_id = source_info.GetBuildProp("ro.build.id")
   prev_build_date = source_info.GetBuildProp("ro.qassa.build_date")
-  prev_security_patch = source_info.GetBuildProp("ro.qassa.build_security_patch")
+  prev_security_patch = source_info.GetBuildProp("ro.build.version.security_patch")
   script.PrintQASSABanner(QASSA_version, android_version, build_id, build_date,
                                   security_patch, device, prev_build_id,
                                   prev_build_date, prev_security_patch)
