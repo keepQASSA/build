@@ -247,7 +247,7 @@ class EdifyGenerator(object):
   def PrintQASSABanner(self, QASSA_version, android_version, build_id, build_date,
                                   security_patch, device, prev_build_id=None,
                                   prev_build_date=None, prev_security_patch=None):
-    self.Print("dude, look who's back, still flash android 10 in 2023..? [LAUGH]")
+    self.Print("Sisu. endure, try to cross the limits, never give up until you succeed.")
 
   def TunePartition(self, partition, *options):
     fstab = self.fstab
