@@ -247,7 +247,7 @@ class EdifyGenerator(object):
   def PrintQASSABanner(self, QASSA_version, android_version, build_id, build_date,
                                   security_patch, device, prev_build_id=None,
                                   prev_build_date=None, prev_security_patch=None):
-    self.Print("Sisu. endure, try to cross the limits, never give up until you succeed.")
+    self.Print("Sisu. bertahan, berusaha melewati batas, pantang menyerah hingga berhasil.")
 
   def TunePartition(self, partition, *options):
     fstab = self.fstab
